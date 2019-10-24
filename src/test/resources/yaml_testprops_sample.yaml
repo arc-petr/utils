@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: "rest-service"
+  boot:
+    admin:
+      client:
+        instance:
+          metadata:
+            tags:
+              environment: "${APP_ENV:local}"
+        url: "${SPRING_BOOT_URL:http://localhost:8081/admin}"
+        enabled: "${SPRING_BOOT_ADMIN_CLIENT:true}"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: "/manage"
+info:
+  tags:
+    environment: "${APP_ENV:local}"

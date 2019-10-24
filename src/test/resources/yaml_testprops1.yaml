@@ -1,0 +1,6 @@
+test:
+  property: "false"
+#Test properties
+#Test properties
+  property.val: 123
+  property.ext: "1234"
