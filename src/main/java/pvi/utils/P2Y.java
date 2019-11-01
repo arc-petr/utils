@@ -11,7 +11,7 @@ public class P2Y {
     public static void main(String[] args) {
 
         if (args == null || args.length == 0) {
-            handleErrorInput("Not enough arguments%n.");
+            handleErrorInput("Not enough arguments. %n");
         }
         File file = new File(args[0]);
 
