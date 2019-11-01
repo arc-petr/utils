@@ -1,8 +1,6 @@
 package pvi.utils.p2y;
 
-import org.apache.commons.io.IOUtils;
 import pvi.utils.p2y.exceptions.P2YConverterException;
-import sun.nio.ch.IOUtil;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,7 +28,6 @@ public class YamlPrinter {
     public static File toFile(File f) {
         PropertiesLoader loader = new PropertiesLoader();
         loader.loadFromFile(f);
-        TreeNode<ValueObject> node = loader.getRoot();
         String newFileName = f.getAbsolutePath();
         if (newFileName.endsWith("properties")) {
             newFileName = newFileName.substring(0, newFileName.length() - 10);

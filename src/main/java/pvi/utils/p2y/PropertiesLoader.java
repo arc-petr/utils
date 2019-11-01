@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 public class PropertiesLoader {
 
-    final static Logger logger = Logger.getLogger(PropertiesLoader.class);
+    private  static final Logger logger = Logger.getLogger(PropertiesLoader.class);
 
     public Configuration getConfig() {
         return config;

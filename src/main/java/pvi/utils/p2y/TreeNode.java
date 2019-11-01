@@ -4,6 +4,7 @@ import pvi.utils.p2y.exceptions.P2YConverterException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class TreeNode<T extends ValueObject> {
     public static final String ROOT_NAME = "<ROOT>";
@@ -56,16 +57,12 @@ public class TreeNode<T extends ValueObject> {
         boolean isRoot = nodeName.equals(ROOT_NAME);
         if (!isRoot) {
             if (data != null) {
-                if (data.getComments() != null) {
-                    sb.append(data.getComments().replaceAll("!", "#")).append("\n");
-                }
-                sb.append(data.asYaml(realNodeName(parentPrefix, flatKey)));
-                flatKey = true;
+                flatKey = handleValue(sb, flatKey, parentPrefix);
             } else {
                 sb.append(realNodeName(parentPrefix, flatKey)).append(":");
             }
         }
-        if (branches != null && branches.size() > 0 && sb.length() > 0) {
+        if (branches.size() > 0 && sb.length() > 0) {
             sb.append("\n");
         }
         StringBuilder csb = new StringBuilder();
@@ -90,22 +87,24 @@ public class TreeNode<T extends ValueObject> {
         }
     }
 
+    private boolean handleValue(StringBuilder sb, boolean flatKey, String parentPrefix) {
+        if (data.getComments() != null) {
+            sb.append(data.getComments().replace("!", "#")).append("\n");
+        }
+        sb.append(data.asYaml(realNodeName(parentPrefix, flatKey)));
+        return true;
+    }
+
     private String realNodeName(String prefix, boolean flat) {
         return flat && prefix != null && !prefix.isEmpty() ? String.format("%s.%s", prefix, nodeName) : nodeName;
     }
 
     private TreeNode<T> ensureTreeNode(String key) {
-        TreeNode<T> node = branches.get(key);
-        if (node == null) {
-            node = new TreeNode<>(key);
-            branches.put(key, node);
-        }
-        return node;
+        return branches.computeIfAbsent(key, TreeNode::new);
     }
+
 
     private String nodeName;
     private T data;
-    private Map<String, TreeNode<T>> branches = new HashMap<>();
-
-
+    private Map<String, TreeNode<T>> branches = new TreeMap<>();
 }

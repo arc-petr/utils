@@ -1,17 +1,17 @@
+test: "Root : node"
+test.property: "111"
+test.property.ext: "1234"
+#Test properties
+#Test properties
+test.property.val: 123
 test2: 1234
 test2.level1:
-test2.level1.prop2: 222
 test2.level1.prop1: 111
+test2.level1.prop2: 222
 test2.level1.prop3: "333"
 test3:
   level1:
     level2: "test value"
-    level2.prop2: 2222
     level2.prop1: 111
+    level2.prop2: 2222
     level2.prop3: "3333"
-test: "Root : node"
-test.property: "111"
-#Test properties
-#Test properties
-test.property.val: 123
-test.property.ext: "1234"

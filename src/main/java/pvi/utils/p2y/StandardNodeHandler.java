@@ -1,7 +1,7 @@
 package pvi.utils.p2y;
 
 public class StandardNodeHandler implements NodeHandler {
-    public ValueObject<?> getVo() {
+    public ValueObject getVo() {
         return vo;
     }
 
