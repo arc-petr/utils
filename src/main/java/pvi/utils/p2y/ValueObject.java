@@ -7,10 +7,6 @@ public class ValueObject<T> {
     private T data;
     private String comments;
 
-    public T getData() {
-        return data;
-    }
-
     public String getComments() {
         return comments;
     }

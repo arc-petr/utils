@@ -2,7 +2,6 @@ package pvi.utils.p2y;
 
 import pvi.utils.p2y.exceptions.P2YConverterException;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
